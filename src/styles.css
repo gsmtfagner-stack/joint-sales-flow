@@ -105,6 +105,19 @@
 }
 
 
+@utility title {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+@utility smoke-bg {
+  background-image:
+    radial-gradient(ellipse at top, oklch(0.53 0.19 28 / 0.18), transparent 60%),
+    radial-gradient(ellipse at bottom right, oklch(0.81 0.15 74 / 0.12), transparent 55%);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
