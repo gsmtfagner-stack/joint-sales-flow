@@ -27,11 +27,17 @@ export function passwordMatches(input: string, expected: string): boolean {
   return timingSafeEqual(a, b);
 }
 
+export async function isUnlocked() {
+  const session = await useSession<GateSession>(sessionConfig());
+  return !!session.data.unlocked;
+}
+
 export async function requireUnlocked() {
   const session = await useSession<GateSession>(sessionConfig());
-  if (!session.data.unlocked) throw redirect({ to: "/entrar" });
+  if (!session.data.unlocked) throw new Error(UNLOCK_REQUIRED);
   return session;
 }
+
 
 export async function getAdmin() {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
