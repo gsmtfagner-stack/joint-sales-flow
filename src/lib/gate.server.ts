@@ -9,7 +9,13 @@ export function sessionConfig() {
     password: process.env["SESSION_SECRET"]!,
     name: "resenha-gate",
     maxAge: 60 * 60 * 24 * 30,
-    cookie: { httpOnly: true, secure: true, sameSite: "lax" as const, path: "/" },
+    cookie: {
+      httpOnly: true,
+      secure: process.env["NODE_ENV"] === "production",
+      sameSite: "lax" as const,
+      path: "/",
+    },
+
   };
 }
 
