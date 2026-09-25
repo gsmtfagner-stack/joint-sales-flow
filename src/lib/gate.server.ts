@@ -1,6 +1,8 @@
 import { useSession } from "@tanstack/react-start/server";
-import { redirect } from "@tanstack/react-router";
 import { createHash, timingSafeEqual } from "node:crypto";
+
+export const UNLOCK_REQUIRED = "UNLOCK_REQUIRED";
+
 
 export type GateSession = { unlocked?: boolean };
 
