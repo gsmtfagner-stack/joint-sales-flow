@@ -1,10 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
 
 export const ensureUnlocked = createServerFn({ method: "GET" }).handler(async () => {
-  const { requireUnlocked } = await import("./gate.server");
-  await requireUnlocked();
-  return { ok: true as const };
+  const { isUnlocked } = await import("./gate.server");
+  return { unlocked: await isUnlocked() };
 });
+
 
 
 
