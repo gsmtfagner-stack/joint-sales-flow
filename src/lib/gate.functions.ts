@@ -1,5 +1,13 @@
 import { createServerFn } from "@tanstack/react-start";
 
+export const ensureUnlocked = createServerFn({ method: "GET" }).handler(async () => {
+  const { requireUnlocked } = await import("./gate.server");
+  await requireUnlocked();
+  return { ok: true as const };
+});
+
+
+
 export const unlockSite = createServerFn({ method: "POST" })
   .inputValidator((data: { password: string }) => data)
   .handler(async ({ data }) => {
