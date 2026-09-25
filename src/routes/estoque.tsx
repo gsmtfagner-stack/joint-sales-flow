@@ -6,7 +6,7 @@ import { Pencil, Plus, Minus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { AppShell, SectionTitle } from "@/components/AppShell";
-import { ensureUnlocked } from "@/lib/gate.functions";
+import { requireUnlockedLoader } from "@/lib/gate-loader";
 import {
   listProducts,
   saveProduct,
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/estoque")({
       },
     ],
   }),
-  loader: () => ensureUnlocked(),
+  loader: () => requireUnlockedLoader(),
   component: Estoque,
 });
 

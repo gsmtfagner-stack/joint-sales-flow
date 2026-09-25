@@ -6,7 +6,7 @@ import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { AppShell, SectionTitle } from "@/components/AppShell";
-import { ensureUnlocked } from "@/lib/gate.functions";
+import { requireUnlockedLoader } from "@/lib/gate-loader";
 import { listCash, addCashEntry, deleteCashEntry } from "@/lib/data.functions";
 import type { PaymentMethod } from "@/lib/data.functions";
 import { brl, dateTime, isToday } from "@/lib/format";
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/caixa")({
       },
     ],
   }),
-  loader: () => ensureUnlocked(),
+  loader: () => requireUnlockedLoader(),
   component: Caixa,
 });
 

@@ -6,7 +6,7 @@ import { Pencil, Trash2, Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
 
 import { AppShell } from "@/components/AppShell";
-import { ensureUnlocked } from "@/lib/gate.functions";
+import { requireUnlockedLoader } from "@/lib/gate-loader";
 import { listSales, updateSale, deleteSale } from "@/lib/data.functions";
 import type { PaymentMethod, SaleItemInput } from "@/lib/data.functions";
 import { brl, dateTime, isToday } from "@/lib/format";
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/vendas")({
       },
     ],
   }),
-  loader: () => ensureUnlocked(),
+  loader: () => requireUnlockedLoader(),
   component: Vendas,
 });
 
